@@ -32,3 +32,33 @@ export const createCompany = async (req, res) => {
         });
     }
 };
+
+export const updateCompany = async (req, res) => {
+    try {
+        const { idCompany } = req.params;
+        const  data  = req.body;
+         
+        const company = await Company.findById(idCompany);
+
+        if(!company){
+            return res.status(404).json({
+                success: false,
+                message: "Empresa no encontrada"
+            })
+        }
+
+        const updateCompany = await Company.findByIdAndUpdate(idCompany, data, { new: true });
+
+        res.status(200).json({
+            success: true,
+            msg: 'Empresa Actualizada',
+            company: updateCompany,
+        });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            msg: 'Error al actualizar empresa',
+            error: err.message
+        });
+    }
+}

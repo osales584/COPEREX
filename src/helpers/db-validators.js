@@ -7,6 +7,12 @@ export const emailExists = async (email = "") => {
     }
 }
 
+export const nameExists = async (name = "") => {
+    const existe = await Company.findOne({ name });
+    if (existe) {
+        throw new Error(`The name ${name} is already registered`);
+    }
+}
 
 export const companyExists = async (id = "") => {
     const existe = await Company.findById(id);
