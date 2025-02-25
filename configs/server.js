@@ -7,6 +7,7 @@ import morgan from "morgan"
 import { dbConnection } from "./mongo.js"
 import { createUserAdmin } from "./admin.js"
 import authRoutes from "../src/auth/auth.routes.js"
+import companyRoutes from "../src/company/comapny.routes.js"
 
 
 const middlewares = (app) => {
@@ -19,6 +20,7 @@ const middlewares = (app) => {
 
 const routes = (app) =>{
     app.use("/companyCoperex/v1/auth", authRoutes)
+    app.use("/companyCoperex/v1/company", companyRoutes)
 }
 
 const conectarDB = async () =>{
