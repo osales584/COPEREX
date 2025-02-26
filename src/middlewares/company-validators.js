@@ -32,3 +32,13 @@ export const updateCompanyValidator = [
     handleErrors
     
 ];
+
+export const getCompaniesValidator = [
+    validateJWT,
+    hasRoles("ADMIN_ROLE"),
+];
+
+export const generateReportValidator = [
+    validateJWT,
+    hasRoles("ADMIN_ROLE"),
+];
